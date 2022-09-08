@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html CSS JavaScript>
 <html>
     <head>
         <title>Lowballing Calculator</title>
@@ -20,7 +20,7 @@
             <br>
             <input type="checkbox" id="calcProfit" name="calcProfit">
             <br>
-            <label for="calcAuction">Check if you would like to subtract auction list price from the expected profit</label>
+            <label for="calcAuction">Check if you would like to subtract auction list price from the expected profit <br>Only Select if item is 1m+</label>
             <br>
             <input type="checkbox" id="calcAuction" name="calcAuction">
             <label for"submit">Click to submit</label>
@@ -29,14 +29,16 @@
             <script>
             let binPrice = document.getElementById("price")
             let lowAmount = document.getElementById("low")
-            const calcProft = document.querySelector("#calcProfit")
-            const calcAH = document.querySelector("#calcAuction")
-                function calculate(){
-                    let offer = binPrice.value -((binPrice.value / 100)*lowAmount.value);
-                    document.getElementById("offerAmount").innerHTML = offer.toString();
-                    if(calcProfit.checked){
-                        document.getElementById("expectedProfit").innerHTML = (binPrice.value - offer).toString();
-                    }
+            const calcProfit = document.querySelector("#calcProfit")
+            const calcAh = document.querySelector("#calcAuction")
+            function calculate(){
+                document.getElementById("offerAmount").innerHTML = (binPrice.value - ((binPrice.value / 100)*lowAmount.value)).toString();
+                let offer = binPrice.value - ((binPrice.value / 100)*lowAmount.value);
+                if(calcProfit.checked && calcAh.checked){
+                    document.getElementById("expectedProfit").innerHTML = (binPrice.value - offer - binPrice.value / 100).toString();
+                }
+                
+            }
             </script>
         </form>
         <p id="offerAmount">Recommended offer will display here</p>
