@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lowballing Calculator</title>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <h1>Low Balling Calculator</h1>
+    </head>
+    <body>
+        <form>
+            <label for="price">What is the lowest BIN of the item?</label>
+            <br>
+            <input type="number" id="price" name="price">
+            <br>
+            <label for="low">What % are you lowballing by? (do not enter % sign)</label>
+            <br>
+            <input type="number" id="low" name="low">
+            <br>
+            <label for="calcProfit">Check if you want to calculate profit</label>
+            <br>
+            <input type="checkbox" id="calcProfit" name="calcProfit">
+            <br>
+            <label for="calcAuction">Check if you would like to subtract auction list price from the expected profit</label>
+            <br>
+            <input type="checkbox" id="calcAuction" name="calcAuction">
+            <label for"submit">Click to submit</label>
+            <br>
+            <input onclick="calculate()" type="button"id="submit"name="submit" value="Submit" style="blackText">
+            <script>
+            let binPrice = document.getElementById("price")
+            let lowAmount = document.getElementById("low")
+            const calcProft = document.querySelector("#calcProfit")
+            const calcAH = document.querySelector("#calcAuction")
+                function calculate(){
+                    let offer = binPrice.value -((binPrice.value / 100)*lowAmount.value);
+                    document.getElementById("offerAmount").innerHTML = offer.toString();
+                    if(calcProfit.checked){
+                        document.getElementById("expectedProfit").innerHTML = (binPrice.value - offer).toString();
+                    }
+            </script>
+        </form>
+        <p id="offerAmount">Recommended offer will display here</p>
+        <p id="expectedProfit">Expected Profit</p>
+    </body>
+</html>
