@@ -36,6 +36,10 @@
                 let offer = binPrice.value - ((binPrice.value / 100)*lowAmount.value);
                 if(calcProfit.checked && calcAh.checked){
                     document.getElementById("expectedProfit").innerHTML = (binPrice.value - offer - (binPrice.value / 100)*2).toString();
+                }else if(calcProfit.checked){
+                    document.getElementById("expectedProfit").innerHTML = (binPrice.value - offer).toString();
+                    
+                    
                 }
                 
             }
